@@ -139,8 +139,21 @@
 <section class="container" id="members">
   <h2 class="section-title">ସଦସ୍ୟ ତାଲିକା</h2>
   <div class="notice">
-    ସଦସ୍ୟମାନଙ୍କର ତାଲିକା ଏଠାରେ ଦେଖାଯିବ।
-    <p>ତଥ୍ୟ ଯୋଡ଼ିବା ପାଇଁ Admin ବ୍ୟବସ୍ଥା ପରବର୍ତ୍ତୀ ପର୍ଯ୍ୟାୟରେ ସଂଯୋଗ ହେବ।</p>
+    <div id="memberCount">ସଦସ୍ୟ ତାଲିକା ଲୋଡ୍ ହେଉଛି...</div>
+  </div>
+  <div style="overflow-x:auto;">
+    <table id="memberTable">
+      <thead>
+        <tr>
+          <th>କ୍ରମିକ</th>
+          <th>ସଦସ୍ୟଙ୍କ ନାମ</th>
+          <th>ବୁକ୍ ନଂ.</th>
+          <th>ରସିଦ ନଂ.</th>
+          <th>ଦାନ ରାଶି</th>
+        </tr>
+      </thead>
+      <tbody id="memberList"></tbody>
+    </table>
   </div>
 </section>
 
@@ -174,5 +187,64 @@
   <p>ଗୁଣୁପୁର, ଓଡ଼ିଶା</p>
 </footer>
 
+
+<script>
+const API_URL = "https://script.google.com/macros/s/AKfycbyLTzQZ_CIDcri53-W3FZy3QpN7DlLZ7pElz66tQba8lXv6b_94WqFjy_aeLuKGPU0p/exec";
+
+function loadMembers() {
+  const callbackName = "membersCallback";
+
+  window[callbackName] = function(data) {
+    const list = document.getElementById("memberList");
+    const count = document.getElementById("memberCount");
+
+    if (!Array.isArray(data)) {
+      count.textContent = "ତଥ୍ୟ ଲୋଡ୍ ହୋଇପାରିଲା ନାହିଁ";
+      return;
+    }
+
+    count.textContent = "ମୋଟ ସଦସ୍ୟ ସଂଖ୍ୟା: " + data.length + " ଜଣ";
+
+    list.innerHTML = data.map(member => `
+      <tr>
+        <td>${escapeHTML(member.serial)}</td>
+        <td>${escapeHTML(member.name)}</td>
+        <td>${escapeHTML(member.bookNo)}</td>
+        <td>${escapeHTML(member.receiptNo)}</td>
+        <td>₹${escapeHTML(member.amount)}</td>
+      </tr>
+    `).join("");
+
+    delete window[callbackName];
+    document.getElementById("memberScript")?.remove();
+  };
+
+  const script = document.createElement("script");
+  script.id = "memberScript";
+  script.src = API_URL + "?callback=" + callbackName + "&t=" + Date.now();
+  script.onerror = function() {
+    document.getElementById("memberCount").textContent =
+      "ତଥ୍ୟ ଲୋଡ୍ ହୋଇପାରିଲା ନାହିଁ। ପୁଣି ଚେଷ୍ଟା କରନ୍ତୁ।";
+    script.remove();
+  };
+
+  document.body.appendChild(script);
+}
+
+function escapeHTML(value) {
+  return String(value ?? "").replace(/[&<>"']/g, char => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;"
+  })[char]);
+}
+
+loadMembers();
+setInterval(loadMembers, 15000);
+</script>
 </body>
+</html>
+
 </html>
