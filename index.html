@@ -2,251 +2,374 @@
 <!DOCTYPE html>
 <html lang="or">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>24 Prahara | Akhanda Nama Jagyan Mahotsav</title>
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: Arial, sans-serif;
-      background: #fffaf1;
-      color: #352416;
-      line-height: 1.6;
-    }
-    header {
-      background: #762b13;
-      color: white;
-      padding: 18px 6%;
-      text-align: center;
-    }
-    header h1 { font-size: 27px; }
-    header p { color: #ffe2a8; }
-    nav {
-      background: #4d1c0d;
-      padding: 12px;
-      text-align: center;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0 12px;
-      font-size: 14px;
-    }
-    .hero {
-      text-align: center;
-      padding: 75px 20px;
-      background: linear-gradient(135deg,#8e3214,#d97825);
-      color: white;
-    }
-    .hero h2 { font-size: 36px; margin-bottom: 12px; }
-    .hero p { font-size: 18px; color: #fff0d6; }
-    .hero .date {
-      display: inline-block;
-      margin-top: 22px;
-      padding: 10px 22px;
-      border: 1px solid #ffe3ad;
-      border-radius: 30px;
-    }
-    .container {
-      max-width: 1100px;
-      margin: auto;
-      padding: 40px 20px;
-    }
-    .section-title {
-      text-align: center;
-      color: #842e13;
-      margin-bottom: 25px;
-      font-size: 27px;
-    }
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
-      gap: 18px;
-    }
-    .card {
-      background: white;
-      padding: 24px;
-      border-radius: 14px;
-      box-shadow: 0 3px 14px #00000012;
-      border-top: 4px solid #d97825;
-    }
-    .card h3 { color: #842e13; margin-bottom: 10px; }
-    .card p { color: #655448; }
-    .notice {
-      background: #fff0d6;
-      border-left: 5px solid #d97825;
-      padding: 20px;
-      border-radius: 8px;
-      margin-top: 20px;
-    }
-    footer {
-      background: #4d1c0d;
-      color: white;
-      text-align: center;
-      padding: 25px 15px;
-    }
-    footer p { color: #ffe2a8; }
-    @media(max-width:600px) {
-      .hero h2 { font-size: 27px; }
-      nav a { display: inline-block; margin: 5px 7px; }
-      header h1 { font-size: 21px; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#54151b">
+<title>24 Prahara | Gunupur</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Oriya:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --maroon:#54151b;
+  --deep:#310b10;
+  --gold:#d7ad58;
+  --cream:#fff9ed;
+  --text:#39251d;
+}
+* { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; }
+body {
+  font-family:'Noto Sans Oriya',Arial,sans-serif;
+  background:var(--cream);
+  color:var(--text);
+  line-height:1.75;
+}
+.topbar {
+  background:var(--deep);
+  color:#f6dfad;
+  padding:8px 6%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  font-size:12px;
+}
+.lang button {
+  border:1px solid #b98b43;
+  background:transparent;
+  color:#ffe7b0;
+  padding:5px 12px;
+  cursor:pointer;
+  border-radius:20px;
+  margin-left:5px;
+}
+.lang button.active { background:var(--gold);color:#301014; }
+.brand {
+  background:linear-gradient(120deg,#5b1720,#801f29,#4a1018);
+  color:white;
+  padding:22px 6%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:22px;
+  text-align:left;
+  border-bottom:3px solid var(--gold);
+}
+.brand img { width:105px;height:105px;object-fit:contain; }
+.brand h1 { font-size:clamp(19px,3vw,30px);line-height:1.5; }
+.brand p { color:#f3d69c;font-size:14px; }
+nav {
+  position:sticky;
+  top:0;
+  z-index:20;
+  background:#351014;
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  padding:10px 12px;
+  box-shadow:0 4px 12px #0002;
+}
+nav a {
+  text-decoration:none;
+  color:#fff2d4;
+  padding:8px 14px;
+  font-size:13px;
+  transition:.2s;
+}
+nav a:hover { color:var(--gold); }
+.hero {
+  min-height:470px;
+  padding:85px 20px;
+  text-align:center;
+  color:white;
+  background:
+    linear-gradient(90deg,#2b090ddf,#53141bd9,#2b090ddf),
+    url('https://images.unsplash.com/photo-1604608672516-5f7c2c3f6b0c?auto=format&fit=crop&w=1800&q=85') center/cover;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+}
+.hero .eyebrow {
+  color:#f4d38f;
+  letter-spacing:3px;
+  font-size:13px;
+  margin-bottom:12px;
+}
+.hero h2 {
+  font-size:clamp(30px,5vw,54px);
+  color:#ffe3a5;
+  margin-bottom:15px;
+  text-shadow:0 3px 12px #0008;
+}
+.hero p { font-size:17px;max-width:750px;color:#fff6e6; }
+.hero .dates {
+  margin-top:25px;
+  border:1px solid var(--gold);
+  border-radius:30px;
+  padding:9px 24px;
+  color:#ffe2a2;
+  background:#35101466;
+}
+.section {
+  max-width:1160px;
+  margin:auto;
+  padding:65px 22px;
+}
+.section-title {
+  text-align:center;
+  color:var(--maroon);
+  font-size:clamp(23px,3vw,32px);
+  margin-bottom:10px;
+}
+.section-sub {
+  text-align:center;
+  color:#8a7162;
+  margin-bottom:32px;
+  font-size:14px;
+}
+.gold-line {
+  width:75px;height:3px;
+  background:var(--gold);
+  margin:14px auto 24px;
+}
+.cards {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:22px;
+}
+.card {
+  background:white;
+  padding:25px;
+  border:1px solid #eadcc3;
+  border-radius:12px;
+  box-shadow:0 7px 25px #4b1b1010;
+  border-top:4px solid var(--gold);
+}
+.card h3 { color:var(--maroon);font-size:18px;margin-bottom:10px; }
+.card p { color:#756052;font-size:14px; }
+.card .symbol {
+  font-size:30px;
+  color:#b8893c;
+  margin-bottom:12px;
+}
+.notice {
+  background:#f8edda;
+  border-left:4px solid var(--gold);
+  padding:20px;
+  border-radius:7px;
+  text-align:center;
+}
+.table-wrap {
+  overflow-x:auto;
+  background:white;
+  border:1px solid #eadcc3;
+  border-radius:10px;
+}
+table { width:100%;border-collapse:collapse;min-width:600px; }
+th,td { padding:13px 15px;text-align:left;border-bottom:1px solid #eee3d3; }
+th { background:var(--maroon);color:white;font-size:14px; }
+td { font-size:14px; }
+.current {
+  background:linear-gradient(120deg,#54151b,#842b32);
+  color:white;
+  text-align:center;
+  padding:35px 20px;
+  border-radius:14px;
+  border:2px solid var(--gold);
+}
+.current h3 { color:#ffdf9b;font-size:21px; }
+.current .mandali { font-size:25px;margin:15px 0; }
+.sequence {
+  background:white;
+  border:1px solid #eadcc3;
+  padding:14px 18px;
+  border-radius:8px;
+  margin:10px 0;
+  display:flex;
+  gap:15px;
+  align-items:center;
+}
+.sequence span {
+  background:var(--maroon);
+  color:white;
+  border-radius:50%;
+  width:32px;height:32px;
+  display:grid;place-items:center;
+  flex-shrink:0;
+}
+footer {
+  background:var(--deep);
+  color:white;
+  text-align:center;
+  padding:40px 20px;
+  border-top:4px solid var(--gold);
+}
+footer h2 { color:#f2d18f;margin-bottom:10px; }
+footer p { color:#d8c2a4;font-size:13px; }
+.copyright {
+  border-top:1px solid #ffffff25;
+  margin-top:25px;padding-top:18px;
+  font-size:12px;color:#bda58b;
+}
+@media(max-width:650px) {
+  .brand { flex-direction:column;text-align:center;gap:8px; }
+  .brand img { width:90px;height:90px; }
+  .hero { min-height:400px;padding:65px 18px; }
+  nav a { padding:7px 9px;font-size:12px; }
+  .section { padding:45px 16px; }
+  .topbar { padding:8px 12px; }
+}
+</style>
 </head>
+
 <body>
 
-<header>
-  <img src="logo.png" alt="24 Prahara Logo"
-       style="width:130px;height:130px;object-fit:contain;">
-  <h1>୨୪ ପ୍ରହର ନାମଯଜ୍ଞ ମହୋତ୍ସବ</h1>
-  <p>ପରିଚାଳନା କମିଟି, ଗୁଣପୁର</p>
+<div class="topbar">
+  <span data-or="ଜୟ ଜଗନ୍ନାଥ" data-en="Jai Jagannath">ଜୟ ଜଗନ୍ନାଥ</span>
+  <div class="lang">
+    <button id="orBtn" class="active" onclick="setLanguage('or')">ଓଡ଼ିଆ</button>
+    <button id="enBtn" onclick="setLanguage('en')">English</button>
+  </div>
+</div>
+
+<header class="brand">
+  <img src="logo.png" alt="24 Prahara Committee Logo">
+  <div>
+    <h1 data-or="୨୪ ପ୍ରହର ନାମଯଜ୍ଞ ମହୋତ୍ସବ" data-en="24 Prahara Akhanda Nama Yajna Mahotsav">୨୪ ପ୍ରହର ନାମଯଜ୍ଞ ମହୋତ୍ସବ</h1>
+    <p data-or="ପରିଚାଳନା କମିଟି, ଗୁଣପୁର" data-en="Organising Committee, Gunupur">ପରିଚାଳନା କମିଟି, ଗୁଣପୁର</p>
+  </div>
 </header>
 
 <nav>
-  <a href="#home">ମୁଖ୍ୟ ପୃଷ୍ଠା</a>
-  <a href="#programme">କାର୍ଯ୍ୟକ୍ରମ</a>
-  <a href="#members">ସଦସ୍ୟ</a>
-  <a href="#donations">ଦାନ</a>
-  <a href="#kirtan">କୀର୍ତ୍ତନ ମଣ୍ଡଳୀ</a>
+  <a href="#home" data-or="ମୁଖ୍ୟ ପୃଷ୍ଠା" data-en="Home">ମୁଖ୍ୟ ପୃଷ୍ଠା</a>
+  <a href="#about" data-or="ମହୋତ୍ସବ" data-en="About">ମହୋତ୍ସବ</a>
+  <a href="#programme" data-or="କାର୍ଯ୍ୟକ୍ରମ" data-en="Programme">କାର୍ଯ୍ୟକ୍ରମ</a>
+  <a href="#members" data-or="ସଦସ୍ୟ" data-en="Members">ସଦସ୍ୟ</a>
+  <a href="#donations" data-or="ଦାନ ଓ ସହଯୋଗ" data-en="Donations">ଦାନ ଓ ସହଯୋଗ</a>
+  <a href="#kirtan" data-or="କୀର୍ତ୍ତନ ମଣ୍ଡଳୀ" data-en="Kirtan Mandalis">କୀର୍ତ୍ତନ ମଣ୍ଡଳୀ</a>
 </nav>
 
 <section class="hero" id="home">
-  <h2>ଜୟ ଜଗନ୍ନାଥ</h2>
-  <p>ହରେ କୃଷ୍ଣ ହରେ କୃଷ୍ଣ, କୃଷ୍ଣ କୃଷ୍ଣ ହରେ ହରେ</p>
-  <p>ହରେ ରାମ ହରେ ରାମ, ରାମ ରାମ ହରେ ହରେ</p>
-  <div class="date">୧୮ ନଭେମ୍ବର – ୨୨ ନଭେମ୍ବର ୨୦୨୬</div>
+  <div class="eyebrow">॥ श्री जगन्नाथाय नमः ॥</div>
+  <h2 data-or="ଜୟ ଜଗନ୍ନାଥ" data-en="JAI JAGANNATH">ଜୟ ଜଗନ୍ନାଥ</h2>
+  <p data-or="ହରେ କୃଷ୍ଣ ହରେ କୃଷ୍ଣ, କୃଷ୍ଣ କୃଷ୍ଣ ହରେ ହରେ । ହରେ ରାମ ହରେ ରାମ, ରାମ ରାମ ହରେ ହରେ ।"
+     data-en="Hare Krishna Hare Krishna, Krishna Krishna Hare Hare. Hare Rama Hare Rama, Rama Rama Hare Hare.">
+     ହରେ କୃଷ୍ଣ ହରେ କୃଷ୍ଣ, କୃଷ୍ଣ କୃଷ୍ଣ ହରେ ହରେ । ହରେ ରାମ ହରେ ରାମ, ରାମ ରାମ ହରେ ହରେ ।
+  </p>
+  <div class="dates" data-or="୧୮ ନଭେମ୍ବର – ୨୨ ନଭେମ୍ବର ୨୦୨୬" data-en="18 November – 22 November 2026">୧୮ ନଭେମ୍ବର – ୨୨ ନଭେମ୍ବର ୨୦୨୬</div>
 </section>
 
-<section class="container" id="programme">
-  <h2 class="section-title">ମହୋତ୍ସବର କାର୍ଯ୍ୟକ୍ରମ</h2>
+<section class="section" id="about">
+  <h2 class="section-title" data-or="ମହୋତ୍ସବ ବିଷୟରେ" data-en="About the Mahotsav">ମହୋତ୍ସବ ବିଷୟରେ</h2>
+  <div class="gold-line"></div>
+  <p class="section-sub" data-or="ଭକ୍ତି, ଶ୍ରଦ୍ଧା ଓ ସାମୂହିକ ନାମ ସଂକୀର୍ତ୍ତନର ଏକ ପବିତ୍ର ଆଧ୍ୟାତ୍ମିକ ଆୟୋଜନ।"
+     data-en="A sacred spiritual gathering celebrating devotion, faith and collective Nama Sankirtan.">
+     ଭକ୍ତି, ଶ୍ରଦ୍ଧା ଓ ସାମୂହିକ ନାମ ସଂକୀର୍ତ୍ତନର ଏକ ପବିତ୍ର ଆଧ୍ୟାତ୍ମିକ ଆୟୋଜନ।
+  </p>
+  <div class="notice">
+    <strong data-or="ଆପଣ ସମସ୍ତ ଭକ୍ତବୃନ୍ଦଙ୍କୁ ଏହି ପବିତ୍ର ମହୋତ୍ସବରେ ସାଦର ନିମନ୍ତ୍ରଣ।"
+      data-en="All devotees are cordially invited to participate in this sacred Mahotsav.">
+      ଆପଣ ସମସ୍ତ ଭକ୍ତବୃନ୍ଦଙ୍କୁ ଏହି ପବିତ୍ର ମହୋତ୍ସବରେ ସାଦର ନିମନ୍ତ୍ରଣ।
+    </strong>
+  </div>
+</section>
+
+<section class="section" id="programme">
+  <h2 class="section-title" data-or="ମହୋତ୍ସବର କାର୍ଯ୍ୟକ୍ରମ" data-en="Festival Programme">ମହୋତ୍ସବର କାର୍ଯ୍ୟକ୍ରମ</h2>
+  <div class="gold-line"></div>
   <div class="cards">
     <div class="card">
-      <h3>୧୮ ନଭେମ୍ବର ୨୦୨୬</h3>
-      <p>ବିରାଟ କଳସ ଯାତ୍ରା</p>
+      <div class="symbol">🪔</div>
+      <h3 data-or="୧୮ ନଭେମ୍ବର ୨୦୨୬" data-en="18 November 2026">୧୮ ନଭେମ୍ବର ୨୦୨୬</h3>
+      <p data-or="ବିରାଟ କଳସ ଯାତ୍ରା" data-en="Grand Kalasa Yatra">ବିରାଟ କଳସ ଯାତ୍ରା</p>
     </div>
     <div class="card">
-      <h3>୧୯ – ୨୨ ନଭେମ୍ବର ୨୦୨୬</h3>
-      <p>୨୪ ପ୍ରହର ଅଖଣ୍ଡ ନାମ ସଂକୀର୍ତ୍ତନ</p>
+      <div class="symbol">🙏</div>
+      <h3 data-or="୧୯ – ୨୨ ନଭେମ୍ବର ୨୦୨୬" data-en="19 – 22 November 2026">୧୯ – ୨୨ ନଭେମ୍ବର ୨୦୨୬</h3>
+      <p data-or="୨୪ ପ୍ରହର ଅଖଣ୍ଡ ନାମ ସଂକୀର୍ତ୍ତନ" data-en="24 Prahara Akhanda Nama Sankirtan">୨୪ ପ୍ରହର ଅଖଣ୍ଡ ନାମ ସଂକୀର୍ତ୍ତନ</p>
     </div>
     <div class="card">
-      <h3>ଅନ୍ନ ପ୍ରସାଦ</h3>
-      <p>୧୮ ତାରିଖ ସନ୍ଧ୍ୟା ୭ଟାରୁ ୨୨ ତାରିଖ ଅପରାହ୍ନ ୨ଟା ପର୍ଯ୍ୟନ୍ତ</p>
+      <div class="symbol">🍚</div>
+      <h3 data-or="ଅନ୍ନ ପ୍ରସାଦ" data-en="Anna Prasad">ଅନ୍ନ ପ୍ରସାଦ</h3>
+      <p data-or="୧୮ ତାରିଖ ସନ୍ଧ୍ୟା ୭ଟାରୁ ୨୨ ତାରିଖ ଅପରାହ୍ନ ୨ଟା ପର୍ଯ୍ୟନ୍ତ"
+       data-en="From 7 PM on 18 November until 2 PM on 22 November">
+       ୧୮ ତାରିଖ ସନ୍ଧ୍ୟା ୭ଟାରୁ ୨୨ ତାରିଖ ଅପରାହ୍ନ ୨ଟା ପର୍ଯ୍ୟନ୍ତ
+      </p>
     </div>
   </div>
 </section>
 
-<section class="container" id="members">
-  <h2 class="section-title">ସଦସ୍ୟ ତାଲିକା</h2>
-  <div class="notice">
-    <div id="memberCount">ସଦସ୍ୟ ତାଲିକା ଲୋଡ୍ ହେଉଛି...</div>
+<section class="section" id="members">
+  <h2 class="section-title" data-or="ସଦସ୍ୟ ତାଲିକା" data-en="Membership Directory">ସଦସ୍ୟ ତାଲିକା</h2>
+  <div class="gold-line"></div>
+  <div class="notice" id="memberStatus"
+   data-or="ସଦସ୍ୟଙ୍କ ତଥ୍ୟ ଶୀଘ୍ର ଏଠାରେ ଉପଲବ୍ଧ ହେବ।"
+   data-en="Membership information will be available here soon.">
+   ସଦସ୍ୟଙ୍କ ତଥ୍ୟ ଶୀଘ୍ର ଏଠାରେ ଉପଲବ୍ଧ ହେବ।
   </div>
-  <div style="overflow-x:auto;">
-    <table id="memberTable">
+  <div class="table-wrap" style="margin-top:20px">
+    <table>
       <thead>
         <tr>
-          <th>କ୍ରମିକ</th>
-          <th>ସଦସ୍ୟଙ୍କ ନାମ</th>
-          <th>ବୁକ୍ ନଂ.</th>
-          <th>ରସିଦ ନଂ.</th>
-          <th>ଦାନ ରାଶି</th>
+          <th data-or="କ୍ରମିକ" data-en="Sl. No.">କ୍ରମିକ</th>
+          <th data-or="ସଦସ୍ୟଙ୍କ ନାମ" data-en="Member Name">ସଦସ୍ୟଙ୍କ ନାମ</th>
+          <th data-or="ବୁକ୍ ନଂ." data-en="Book No.">ବୁକ୍ ନଂ.</th>
+          <th data-or="ରସିଦ ନଂ." data-en="Receipt No.">ରସିଦ ନଂ.</th>
         </tr>
       </thead>
-      <tbody id="memberList"></tbody>
+      <tbody id="memberList">
+        <tr><td colspan="4" style="text-align:center">—</td></tr>
+      </tbody>
     </table>
   </div>
 </section>
 
-<section class="container" id="donations">
-  <h2 class="section-title">ଦାନ ଓ ସହଯୋଗ</h2>
+<section class="section" id="donations">
+  <h2 class="section-title" data-or="ଦାନ ଓ ସହଯୋଗ" data-en="Donations & Contributions">ଦାନ ଓ ସହଯୋଗ</h2>
+  <div class="gold-line"></div>
   <div class="cards">
-    <div class="card"><h3>ଚାଉଳ ଦାତା</h3><p>ଦାତାଙ୍କ ତାଲିକା ଏଠାରେ ଦେଖାଯିବ।</p></div>
-    <div class="card"><h3>ଡାଲି ଦାତା</h3><p>ଦାତାଙ୍କ ତାଲିକା ଏଠାରେ ଦେଖାଯିବ।</p></div>
-    <div class="card"><h3>ଅନ୍ୟାନ୍ୟ ସାମଗ୍ରୀ ଦାତା</h3><p>ଦାତାଙ୍କ ତାଲିକା ଏଠାରେ ଦେଖାଯିବ।</p></div>
-    <div class="card"><h3>ଆର୍ଥିକ ସହଯୋଗୀ</h3><p>ଦାତାଙ୍କ ତାଲିକା ଏଠାରେ ଦେଖାଯିବ।</p></div>
+    <div class="card"><div class="symbol">🌾</div><h3 data-or="ଚାଉଳ ଦାତା" data-en="Rice Donors">ଚାଉଳ ଦାତା</h3><p data-or="ଚାଉଳ ଦାତାଙ୍କ ତାଲିକା ଏଠାରେ ଦେଖାଯିବ।" data-en="Rice donor details will appear here.">ଚାଉଳ ଦାତାଙ୍କ ତାଲିକା ଏଠାରେ ଦେଖାଯିବ।</p></div>
+    <div class="card"><div class="symbol">🥣</div><h3 data-or="ଡାଲି ଦାତା" data-en="Dal Donors">ଡାଲି ଦାତା</h3><p data-or="ଡାଲି ଦାତାଙ୍କ ତାଲିକା ଏଠାରେ ଦେଖାଯିବ।" data-en="Dal donor details will appear here.">ଡାଲି ଦାତାଙ୍କ ତାଲିକା ଏଠାରେ ଦେଖାଯିବ।</p></div>
+    <div class="card"><div class="symbol">🪔</div><h3 data-or="ଅନ୍ୟାନ୍ୟ ସାମଗ୍ରୀ ଦାତା" data-en="Other Material Donors">ଅନ୍ୟାନ୍ୟ ସାମଗ୍ରୀ ଦାତା</h3><p data-or="ସାମଗ୍ରୀ ଦାତାଙ୍କ ତାଲିକା ଏଠାରେ ଦେଖାଯିବ।" data-en="Other material donor details will appear here.">ସାମଗ୍ରୀ ଦାତାଙ୍କ ତାଲିକା ଏଠାରେ ଦେଖାଯିବ।</p></div>
+    <div class="card"><div class="symbol">🙏</div><h3 data-or="ଆର୍ଥିକ ସହଯୋଗୀ" data-en="Financial Contributors">ଆର୍ଥିକ ସହଯୋଗୀ</h3><p data-or="ଆର୍ଥିକ ସହଯୋଗୀଙ୍କ ତାଲିକା ଏଠାରେ ଦେଖାଯିବ।" data-en="Financial contributor details will appear here.">ଆର୍ଥିକ ସହଯୋଗୀଙ୍କ ତାଲିକା ଏଠାରେ ଦେଖାଯିବ।</p></div>
   </div>
 </section>
 
-<section class="container" id="kirtan">
-  <h2 class="section-title">କୀର୍ତ୍ତନ ମଣ୍ଡଳୀ</h2>
-  <div class="cards">
-    <div class="card">
-      <h3>ବର୍ତ୍ତମାନ କୀର୍ତ୍ତନ ମଣ୍ଡଳୀ</h3>
-      <p>ମଣ୍ଡଳୀର ନାମ ଏଠାରେ ଦେଖାଯିବ।</p>
-    </div>
-    <div class="card">
-      <h3>ଆଗାମୀ କୀର୍ତ୍ତନ ମଣ୍ଡଳୀ</h3>
-      <p>କ୍ରମାନୁସାରେ ମଣ୍ଡଳୀ ତାଲିକା ଏଠାରେ ଦେଖାଯିବ।</p>
-    </div>
+<section class="section" id="kirtan">
+  <h2 class="section-title" data-or="କୀର୍ତ୍ତନ ମଣ୍ଡଳୀ" data-en="Kirtan Mandalis">କୀର୍ତ୍ତନ ମଣ୍ଡଳୀ</h2>
+  <div class="gold-line"></div>
+  <div class="current">
+    <h3 data-or="ବର୍ତ୍ତମାନ କୀର୍ତ୍ତନ ମଣ୍ଡଳୀ" data-en="Currently Performing Mandali">ବର୍ତ୍ତମାନ କୀର୍ତ୍ତନ ମଣ୍ଡଳୀ</h3>
+    <div class="mandali" id="currentMandali">—</div>
+  </div>
+  <h3 style="color:#54151b;margin:28px 0 12px" data-or="ଆଗାମୀ କୀର୍ତ୍ତନ ମଣ୍ଡଳୀ" data-en="Upcoming Mandalis">ଆଗାମୀ କୀର୍ତ୍ତନ ମଣ୍ଡଳୀ</h3>
+  <div id="upcomingMandalis">
+    <div class="notice" data-or="କୀର୍ତ୍ତନ ମଣ୍ଡଳୀଙ୍କ ତାଲିକା ଶୀଘ୍ର ଉପଲବ୍ଧ ହେବ।" data-en="Upcoming mandali details will appear here soon.">କୀର୍ତ୍ତନ ମଣ୍ଡଳୀଙ୍କ ତାଲିକା ଶୀଘ୍ର ଉପଲବ୍ଧ ହେବ।</div>
   </div>
 </section>
 
 <footer>
-  <h3>ଜୟ ଜଗନ୍ନାଥ</h3>
-  <p>୨୪ ପ୍ରହର ଅଖଣ୍ଡ ନାମଯଜ୍ଞ ମହୋତ୍ସବ</p>
-  <p>ଗୁଣୁପୁର, ଓଡ଼ିଶା</p>
+  <h2 data-or="ଜୟ ଜଗନ୍ନାଥ" data-en="JAI JAGANNATH">ଜୟ ଜଗନ୍ନାଥ</h2>
+  <p data-or="୨୪ ପ୍ରହର ନାମଯଜ୍ଞ ମହୋତ୍ସବ ପରିଚାଳନା କମିଟି"
+     data-en="24 Prahara Nama Yajna Mahotsav Organising Committee">
+     ୨୪ ପ୍ରହର ନାମଯଜ୍ଞ ମହୋତ୍ସବ ପରିଚାଳନା କମିଟି
+  </p>
+  <p data-or="ଗୁଣୁପୁର, ଓଡ଼ିଶା" data-en="Gunupur, Odisha">ଗୁଣୁପୁର, ଓଡ଼ିଶା</p>
+  <div class="copyright">© 2026 24 Prahara Organising Committee, Gunupur. All Rights Reserved.</div>
 </footer>
 
-
 <script>
-const API_URL = "https://script.google.com/macros/s/AKfycbyLTzQZ_CIDcri53-W3FZy3QpN7DlLZ7pElz66tQba8lXv6b_94WqFjy_aeLuKGPU0p/exec";
-
-function loadMembers() {
-  const callbackName = "membersCallback";
-
-  window[callbackName] = function(data) {
-    const list = document.getElementById("memberList");
-    const count = document.getElementById("memberCount");
-
-    if (!Array.isArray(data)) {
-      count.textContent = "ତଥ୍ୟ ଲୋଡ୍ ହୋଇପାରିଲା ନାହିଁ";
-      return;
-    }
-
-    count.textContent = "ମୋଟ ସଦସ୍ୟ ସଂଖ୍ୟା: " + data.length + " ଜଣ";
-
-    list.innerHTML = data.map(member => `
-      <tr>
-        <td>${escapeHTML(member.serial)}</td>
-        <td>${escapeHTML(member.name)}</td>
-        <td>${escapeHTML(member.bookNo)}</td>
-        <td>${escapeHTML(member.receiptNo)}</td>
-        <td>₹${escapeHTML(member.amount)}</td>
-      </tr>
-    `).join("");
-
-    delete window[callbackName];
-    document.getElementById("memberScript")?.remove();
-  };
-
-  const script = document.createElement("script");
-  script.id = "memberScript";
-  script.src = API_URL + "?callback=" + callbackName + "&t=" + Date.now();
-  script.onerror = function() {
-    document.getElementById("memberCount").textContent =
-      "ତଥ୍ୟ ଲୋଡ୍ ହୋଇପାରିଲା ନାହିଁ। ପୁଣି ଚେଷ୍ଟା କରନ୍ତୁ।";
-    script.remove();
-  };
-
-  document.body.appendChild(script);
+function setLanguage(lang) {
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-or][data-en]').forEach(el => {
+    el.textContent = el.dataset[lang];
+  });
+  document.getElementById('orBtn').classList.toggle('active',lang==='or');
+  document.getElementById('enBtn').classList.toggle('active',lang==='en');
 }
-
-function escapeHTML(value) {
-  return String(value ?? "").replace(/[&<>"']/g, char => ({
-    "&": "&amp;",
-    "<": "&lt;",
-    ">": "&gt;",
-    '"': "&quot;",
-    "'": "&#39;"
-  })[char]);
-}
-
-loadMembers();
-setInterval(loadMembers, 15000);
 </script>
-</body>
-</html>
 
+</body>
 </html>
