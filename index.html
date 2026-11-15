@@ -17,352 +17,239 @@
   --gold:#d7ad58;
   --cream:#fff9ed;
   --text:#39251d;
+  --red:#b52c32;
 }
-
-* {
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
-
-html { scroll-behavior:smooth; }
-
+* {box-sizing:border-box;margin:0;padding:0}
+html {scroll-behavior:smooth;scroll-padding-top:100px}
 body {
   font-family:'Noto Sans Oriya',Arial,sans-serif;
   background:var(--cream);
   color:var(--text);
   line-height:1.75;
 }
-
+button,a {font-family:inherit}
 .topbar {
-  background:var(--deep);
-  color:#f6dfad;
-  padding:8px 6%;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  font-size:12px;
+  background:var(--deep);color:#f6dfad;
+  padding:8px 5%;display:flex;
+  justify-content:space-between;align-items:center;
+  font-size:13px;
 }
-
 .lang button {
-  border:1px solid #b98b43;
-  background:transparent;
-  color:#ffe7b0;
-  padding:5px 12px;
-  cursor:pointer;
-  border-radius:20px;
-  margin-left:5px;
+  border:1px solid var(--gold);background:transparent;
+  color:#ffe7b0;padding:5px 13px;
+  cursor:pointer;border-radius:20px;margin-left:5px;
 }
-
-.lang button.active {
-  background:var(--gold);
-  color:#301014;
-}
-
+.lang button.active {background:var(--gold);color:#301014}
 .brand {
   background:linear-gradient(120deg,#5b1720,#801f29,#4a1018);
-  color:white;
-  padding:22px 6%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:22px;
-  text-align:left;
-  border-bottom:3px solid var(--gold);
+  color:white;padding:20px 5%;display:flex;
+  align-items:center;justify-content:center;gap:20px;
+  text-align:left;border-bottom:3px solid var(--gold);
 }
-
-.brand img {
-  width:105px;
-  height:105px;
-  object-fit:contain;
-}
-
-.brand h1 {
-  font-size:clamp(19px,3vw,30px);
-  line-height:1.5;
-}
-
-.brand p {
-  color:#f3d69c;
-  font-size:14px;
-}
-
+.brand img {width:105px;height:105px;object-fit:contain}
+.brand h1 {font-size:clamp(20px,3vw,32px);line-height:1.5}
+.brand p {color:#f3d69c;font-size:14px}
 nav {
-  position:sticky;
-  top:0;
-  z-index:20;
-  background:#351014;
-  display:flex;
-  justify-content:center;
-  flex-wrap:wrap;
-  padding:10px 12px;
+  position:sticky;top:0;z-index:100;
+  background:#351014;display:flex;
+  justify-content:center;align-items:center;
+  flex-wrap:wrap;padding:8px 10px;
   box-shadow:0 4px 12px #0002;
 }
-
-nav a {
-  text-decoration:none;
-  color:#fff2d4;
-  padding:8px 14px;
-  font-size:13px;
-  transition:.2s;
+nav a,nav summary {
+  text-decoration:none;color:#fff2d4;
+  padding:9px 11px;font-size:13px;
+  cursor:pointer;list-style:none;white-space:nowrap;
 }
-
-nav a:hover { color:var(--gold); }
-
+nav a:hover,nav summary:hover {color:var(--gold)}
+nav details {position:relative}
+nav details[open] summary {color:var(--gold)}
+.dropdown {
+  display:none;position:absolute;top:100%;left:0;
+  min-width:220px;background:#fff9ed;
+  border:1px solid var(--gold);border-radius:8px;
+  box-shadow:0 8px 22px #0003;overflow:hidden;
+}
+nav details[open] .dropdown {display:block}
+.dropdown a {
+  display:block;color:var(--maroon);
+  border-bottom:1px solid #eadcc3;
+}
+.dropdown a:hover {background:#f5e7ca;color:#54151b}
 .hero {
-  min-height:470px;
-  padding:85px 20px;
-  text-align:center;
-  color:white;
-  background:
-    linear-gradient(90deg,#2b090ddf,#53141bd9,#2b090ddf),
-    url('https://images.unsplash.com/photo-1604608672516-5f7c2c3f6b0c?auto=format&fit=crop&w=1800&q=85') center/cover;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
+  min-height:390px;padding:65px 20px;
+  text-align:center;color:white;
+  background:linear-gradient(120deg,#310b10,#72232c,#310b10);
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
 }
-
-.hero .eyebrow {
-  color:#f4d38f;
-  letter-spacing:3px;
-  font-size:13px;
-  margin-bottom:12px;
-}
-
+.hero .eyebrow {color:#f4d38f;letter-spacing:2px;margin-bottom:12px}
 .hero h2 {
-  font-size:clamp(30px,5vw,54px);
-  color:#ffe3a5;
-  margin-bottom:15px;
+  font-size:clamp(32px,5vw,58px);
+  color:#ffe3a5;margin-bottom:14px;
   text-shadow:0 3px 12px #0008;
 }
-
-.hero p {
-  font-size:17px;
-  max-width:750px;
-  color:#fff6e6;
-}
-
+.hero p {font-size:16px;max-width:780px;color:#fff6e6}
 .hero .dates {
-  margin-top:25px;
-  border:1px solid var(--gold);
-  border-radius:30px;
-  padding:9px 24px;
-  color:#ffe2a2;
-  background:#35101466;
+  margin-top:22px;border:1px solid var(--gold);
+  border-radius:30px;padding:8px 24px;color:#ffe2a2;
 }
-
-.section {
-  max-width:1160px;
-  margin:auto;
-  padding:65px 22px;
-}
-
+.section {max-width:1250px;margin:auto;padding:42px 22px}
 .section-title {
-  text-align:center;
-  color:var(--maroon);
-  font-size:clamp(23px,3vw,32px);
-  margin-bottom:10px;
+  text-align:center;color:var(--maroon);
+  font-size:clamp(22px,3vw,30px);margin-bottom:8px;
 }
-
 .section-sub {
-  text-align:center;
-  color:#8a7162;
-  margin-bottom:32px;
-  font-size:14px;
+  text-align:center;color:#8a7162;
+  margin-bottom:24px;font-size:14px;
 }
-
-.gold-line {
-  width:75px;
-  height:3px;
-  background:var(--gold);
-  margin:14px auto 24px;
-}
-
+.gold-line {width:75px;height:3px;background:var(--gold);margin:12px auto 24px}
 .cards {
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
-  gap:22px;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  gap:17px;
 }
-
 .card {
-  background:white;
-  padding:25px;
-  border:1px solid #eadcc3;
-  border-radius:12px;
-  box-shadow:0 7px 25px #4b1b1010;
-  border-top:4px solid var(--gold);
+  background:white;padding:20px;
+  border:1px solid #eadcc3;border-radius:12px;
+  box-shadow:0 5px 18px #4b1b1010;border-top:4px solid var(--gold);
 }
-
-.card h3 {
-  color:var(--maroon);
-  font-size:18px;
-  margin-bottom:10px;
+.card h3 {color:var(--maroon);font-size:17px;margin-bottom:8px}
+.card p {color:#756052;font-size:14px}
+.symbol {font-size:28px;color:#b8893c;margin-bottom:8px}
+.home-grid {
+  display:grid;grid-template-columns:1.55fr 1fr;
+  gap:20px;align-items:stretch;
 }
-
-.card p {
-  color:#756052;
-  font-size:14px;
+.notice-panel {
+  background:#fff;border:1px solid #e4c38a;
+  border-radius:14px;overflow:hidden;
 }
-
-.card .symbol {
-  font-size:30px;
-  color:#b8893c;
-  margin-bottom:12px;
+.panel-title {
+  background:linear-gradient(90deg,#9e252d,#64151d);
+  color:white;padding:11px 17px;font-size:19px;
 }
-
-.notice {
-  background:#f8edda;
-  border-left:4px solid var(--gold);
-  padding:20px;
-  border-radius:7px;
-  text-align:center;
+.notice-item {
+  display:flex;gap:12px;padding:14px 16px;
+  border-bottom:1px solid #eadcc3;align-items:flex-start;
 }
-
-.table-wrap {
-  overflow-x:auto;
-  background:white;
-  border:2px solid #7b2028;
-  border-radius:12px;
-  margin-top:20px;
-  box-shadow:0 7px 25px #4b1b1010;
+.notice-item:last-child {border-bottom:0}
+.notice-number {
+  background:var(--red);color:white;
+  border-radius:50%;min-width:30px;height:30px;
+  display:grid;place-items:center;font-weight:bold;
 }
-
-#memberTable {
-  width:100%;
-  border-collapse:collapse;
-  min-width:600px;
-  background:white;
+.notice-item p {font-size:14px;font-weight:600}
+.notice-warning {
+  background:#fff0ed;border:1px solid #e8b5ac;
+  border-left:5px solid #b52c32;border-radius:9px;
+  padding:16px;margin:12px 0;
 }
-
-#memberTable th {
-  background:var(--maroon);
-  color:#fff2cf;
-  padding:15px 12px;
-  border:1px solid var(--gold);
-  text-align:center;
+.notice-warning h3 {color:#a21f29;margin-bottom:8px}
+.notice-warning p {font-size:14px;margin:7px 0}
+.pdf-row {
+  display:flex;align-items:center;gap:12px;
+  padding:11px 14px;border-bottom:1px solid #eadcc3;
+}
+.pdf-icon {font-size:25px;color:#c32e36}
+.pdf-row strong {display:block;font-size:14px}
+.pdf-row small {color:#88766b}
+.pdf-soon {
+  margin-left:auto;background:#f4e6c8;color:#704b17;
+  padding:5px 9px;border-radius:6px;font-size:11px;
   white-space:nowrap;
-  font-size:14px;
 }
-
-#memberTable td {
-  padding:13px 12px;
-  border:1px solid #d8c5a5;
-  text-align:center;
-  color:#39251d;
-  font-size:14px;
+.info-strip {
+  display:grid;grid-template-columns:repeat(3,1fr);
+  background:#fff;border:1px solid #dfbd7a;
+  border-radius:10px;margin:15px 0;overflow:hidden;
 }
-
-#memberTable tbody tr:nth-child(even) {
-  background:#fff5e5;
+.info-strip div {padding:12px;text-align:center;border-right:1px solid #eadcc3}
+.info-strip div:last-child {border:0}
+.info-strip strong {display:block;color:var(--maroon)}
+.info-strip span {font-size:13px}
+.quick-grid {
+  display:grid;grid-template-columns:repeat(6,1fr);
+  gap:12px;
 }
-
-#memberTable tbody tr:hover {
-  background:#f7e4c2;
+.quick-link {
+  display:flex;flex-direction:column;align-items:center;
+  justify-content:center;text-align:center;
+  min-height:115px;padding:12px 7px;
+  background:#fff;border:1px solid #dfbd7a;
+  border-radius:12px;text-decoration:none;color:var(--text);
+  box-shadow:0 3px 8px #0001;
 }
-
-.member-count {
-  color:var(--maroon);
-  font-weight:700;
-  font-size:15px;
-}
-
-.current {
+.quick-link:hover {background:#f8edda;transform:translateY(-2px)}
+.quick-link .symbol {font-size:27px;margin:0}
+.quick-link strong {font-size:13px;color:var(--maroon)}
+.quick-link small {font-size:11px}
+.countdown {
   background:linear-gradient(120deg,#54151b,#842b32);
-  color:white;
-  text-align:center;
-  padding:35px 20px;
+  border:2px solid var(--gold);border-radius:14px;
+  color:white;padding:22px;text-align:center;
+}
+.countdown h3 {color:#ffdf9b;margin-bottom:12px}
+.countdown-grid {display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+.count-box {
+  background:#fff;color:var(--maroon);
+  border-radius:9px;min-width:75px;padding:9px;
+}
+.count-box strong {font-size:25px;display:block;line-height:1.4}
+.count-box span {font-size:12px}
+.table-wrap {
+  overflow-x:auto;background:white;
+  border:2px solid #7b2028;border-radius:12px;
+  margin-top:20px;
+}
+table {width:100%;border-collapse:collapse;min-width:580px}
+th {
+  background:var(--maroon);color:#fff2cf;
+  padding:13px;border:1px solid var(--gold);
+}
+td {padding:11px;border:1px solid #d8c5a5;text-align:center;font-size:14px}
+tbody tr:nth-child(even) {background:#fff5e5}
+.member-count {color:var(--maroon);font-weight:700}
+.book-card {
+  background:white;border:1px solid #e6d2ad;
+  border-radius:10px;padding:17px;text-align:center;
+}
+.book-card h3 {color:var(--maroon)}
+.book-card p {font-size:14px;color:#766052}
+.book-range {color:#9b6c20;font-weight:bold;margin:7px}
+.book-status {font-size:12px;color:#9b6c20}
+.will-update {
+  text-align:center;padding:55px 20px;
+  background:#fff;border:1px solid #eadcc3;
   border-radius:14px;
-  border:2px solid var(--gold);
 }
-
-.current h3 { color:#ffdf9b;font-size:21px; }
-
-.current .mandali {
-  font-size:25px;
-  margin:15px 0;
-}
-
-.sequence {
-  background:white;
-  border:1px solid #eadcc3;
-  padding:14px 18px;
-  border-radius:8px;
-  margin:10px 0;
-  display:flex;
-  gap:15px;
-  align-items:center;
-}
-
-.sequence span {
-  background:var(--maroon);
-  color:white;
-  border-radius:50%;
-  width:32px;
-  height:32px;
-  display:grid;
-  place-items:center;
-  flex-shrink:0;
-}
-
+.will-update strong {display:block;color:#a52a32;font-size:26px}
+.will-update p {color:#806b5d;margin-top:8px}
 footer {
-  background:var(--deep);
-  color:white;
-  text-align:center;
-  padding:40px 20px;
+  background:var(--deep);color:white;
+  text-align:center;padding:30px 20px;
   border-top:4px solid var(--gold);
 }
-
-footer h2 {
-  color:#f2d18f;
-  margin-bottom:10px;
-}
-
-footer p {
-  color:#d8c2a4;
-  font-size:13px;
-}
-
+footer h2 {color:#f2d18f;margin-bottom:8px}
+footer p {color:#d8c2a4;font-size:13px}
 .copyright {
-  border-top:1px solid #ffffff25;
-  margin-top:25px;
-  padding-top:18px;
-  font-size:12px;
-  color:#bda58b;
+  border-top:1px solid #ffffff25;margin-top:20px;
+  padding-top:15px;font-size:12px;color:#bda58b;
 }
-
+@media(max-width:850px) {
+  .home-grid {grid-template-columns:1fr}
+  .quick-grid {grid-template-columns:repeat(3,1fr)}
+}
 @media(max-width:650px) {
-  .brand {
-    flex-direction:column;
-    text-align:center;
-    gap:8px;
-  }
-
-  .brand img {
-    width:90px;
-    height:90px;
-  }
-
-  .hero {
-    min-height:400px;
-    padding:65px 18px;
-  }
-
-  nav a {
-    padding:7px 9px;
-    font-size:12px;
-  }
-
-  .section { padding:45px 16px; }
-
-  .topbar { padding:8px 12px; }
-
-  #memberTable { font-size:13px; }
-
-  #memberTable th,
-  #memberTable td {
-    padding:9px 7px;
-  }
+  .brand {flex-direction:column;text-align:center;gap:7px}
+  .brand img {width:85px;height:85px}
+  nav {justify-content:flex-start}
+  nav a,nav summary {font-size:12px;padding:7px 8px}
+  .dropdown {position:fixed;left:10px;right:10px;top:auto;min-width:unset}
+  .section {padding:32px 14px}
+  .hero {min-height:330px;padding:50px 16px}
+  .quick-grid {grid-template-columns:repeat(2,1fr)}
+  .info-strip {grid-template-columns:1fr}
+  .info-strip div {border-right:0;border-bottom:1px solid #eadcc3}
 }
 </style>
 </head>
@@ -370,8 +257,7 @@ footer p {
 <body>
 
 <div class="topbar">
-  <span data-or="ଜୟ ଜଗନ୍ନାଥ" data-en="Jai Jagannath">ଜୟ ଜଗନ୍ନାଥ</span>
-
+  <strong>🌐 24prahara.in</strong>
   <div class="lang">
     <button id="orBtn" class="active" onclick="setLanguage('or')">ଓଡ଼ିଆ</button>
     <button id="enBtn" onclick="setLanguage('en')">English</button>
@@ -381,9 +267,9 @@ footer p {
 <header class="brand">
   <img src="logo.png" alt="24 Prahara Committee Logo">
   <div>
-    <h1 data-or="୨୪ ପ୍ରହର ନାମଯଜ୍ଞ ମହୋତ୍ସବ"
+    <h1 data-or="୨୪ ପ୍ରହର ଅଖଣ୍ଡ ନାମଯଜ୍ଞ ମହୋତ୍ସବ"
         data-en="24 Prahara Akhanda Nama Yajna Mahotsav">
-      ୨୪ ପ୍ରହର ନାମଯଜ୍ଞ ମହୋତ୍ସବ
+      ୨୪ ପ୍ରହର ଅଖଣ୍ଡ ନାମଯଜ୍ଞ ମହୋତ୍ସବ
     </h1>
     <p data-or="ପରିଚାଳନା କମିଟି, ଗୁଣପୁର"
        data-en="Organising Committee, Gunupur">
@@ -393,250 +279,262 @@ footer p {
 </header>
 
 <nav>
-  <a href="#home" data-or="ମୁଖ୍ୟ ପୃଷ୍ଠା" data-en="Home">ମୁଖ୍ୟ ପୃଷ୍ଠା</a>
+  <a href="#home" data-or="⌂ ମୁଖ୍ୟ ପୃଷ୍ଠା" data-en="⌂ Home">⌂ ମୁଖ୍ୟ ପୃଷ୍ଠା</a>
   <a href="#about" data-or="ମହୋତ୍ସବ" data-en="About">ମହୋତ୍ସବ</a>
   <a href="#programme" data-or="କାର୍ଯ୍ୟକ୍ରମ" data-en="Programme">କାର୍ଯ୍ୟକ୍ରମ</a>
-  <a href="#members" data-or="ସଦସ୍ୟ" data-en="Members">ସଦସ୍ୟ</a>
-  <a href="#donations" data-or="ଦାନ ଓ ସହଯୋଗ" data-en="Donations">ଦାନ ଓ ସହଯୋଗ</a>
-  <a href="#kirtan" data-or="କୀର୍ତ୍ତନ ମଣ୍ଡଳୀ" data-en="Kirtan Mandalis">କୀର୍ତ୍ତନ ମଣ୍ଡଳୀ</a>
+  <a href="#members" data-or="ସଦସ୍ୟ" data-en="Membership">ସଦସ୍ୟ</a>
+
+  <details>
+    <summary>Membership Receipt Book ▾</summary>
+    <div class="dropdown">
+      <a href="#mb1">Book 1 (1–50)</a>
+      <a href="#mb2">Book 2 (51–100)</a>
+      <a href="#mb3">Book 3 (101–150)</a>
+      <a href="#mb4">Book 4 (151–200)</a>
+    </div>
+  </details>
+
+  <details>
+    <summary>Normal Receipt Book ▾</summary>
+    <div class="dropdown">
+      <a href="#nb1">Book 1 (1–100)</a>
+      <a href="#nb2">Book 2 (101–200)</a>
+      <a href="#nb3">Book 3 (201–300)</a>
+      <a href="#nb4">Book 4 (301–400)</a>
+    </div>
+  </details>
+
+  <a href="#donations" data-or="ଦାନ" data-en="Donations">ଦାନ</a>
+  <a href="#kirtan" data-or="କୀର୍ତ୍ତନ ସମୟ" data-en="Kirtan Timetable">କୀର୍ତ୍ତନ ସମୟ</a>
+  <a href="#gallery" data-or="ଗ୍ୟାଲେରୀ" data-en="Gallery">ଗ୍ୟାଲେରୀ</a>
+  <a href="#committee" data-or="କମିଟି" data-en="Committee">କମିଟି</a>
+  <a href="#kharcha" data-or="ଖର୍ଚ୍ଚ" data-en="Kharcha">ଖର୍ଚ୍ଚ</a>
+  <a href="#contact" data-or="ଯୋଗାଯୋଗ" data-en="Contact">ଯୋଗାଯୋଗ</a>
 </nav>
 
 <section class="hero" id="home">
   <div class="eyebrow">॥ श्री जगन्नाथाय नमः ॥</div>
-
-  <h2 data-or="ଜୟ ଜଗନ୍ନାଥ" data-en="JAI JAGANNATH">
-    ଜୟ ଜଗନ୍ନାଥ
-  </h2>
-
+  <h2 data-or="ଜୟ ଜଗନ୍ନାଥ" data-en="JAI JAGANNATH">ଜୟ ଜଗନ୍ନାଥ</h2>
   <p data-or="ହରେ କୃଷ୍ଣ ହରେ କୃଷ୍ଣ, କୃଷ୍ଣ କୃଷ୍ଣ ହରେ ହରେ । ହରେ ରାମ ହରେ ରାମ, ରାମ ରାମ ହରେ ହରେ ।"
      data-en="Hare Krishna Hare Krishna, Krishna Krishna Hare Hare. Hare Rama Hare Rama, Rama Rama Hare Hare.">
     ହରେ କୃଷ୍ଣ ହରେ କୃଷ୍ଣ, କୃଷ୍ଣ କୃଷ୍ଣ ହରେ ହରେ । ହରେ ରାମ ହରେ ରାମ, ରାମ ରାମ ହରେ ହରେ ।
   </p>
+  <div class="dates">୧୮ ନଭେମ୍ବର – ୨୨ ନଭେମ୍ବର ୨୦୨୬</div>
+</section>
 
-  <div class="dates"
-       data-or="୧୮ ନଭେମ୍ବର – ୨୨ ନଭେମ୍ବର ୨୦୨୬"
-       data-en="18 November – 22 November 2026">
-    ୧୮ ନଭେମ୍ବର – ୨୨ ନଭେମ୍ବର ୨୦୨୬
+<main>
+
+<section class="section">
+  <div class="home-grid">
+
+    <div>
+      <div class="notice-panel">
+        <div class="panel-title">🔔 ଜରୁରୀ ଘୋଷଣା</div>
+
+        <div class="notice-item">
+          <span class="notice-number">୧</span>
+          <p>କମିଟିର ଅନୁମୋଦିତ ରସିଦ ବିନା କୌଣସି ବ୍ୟକ୍ତିଙ୍କୁ ଅର୍ଥ ପ୍ରଦାନ କରନ୍ତୁ ନାହିଁ। ରସିଦ ବିନା ଦିଆଯାଇଥିବା ଅର୍ଥ ପାଇଁ ପରିଚାଳନା କମିଟି ଦାୟୀ ରହିବ ନାହିଁ।</p>
+        </div>
+
+        <div class="notice-item">
+          <span class="notice-number">୨</span>
+          <p>ମହୋତ୍ସବ ପାଇଁ ଯେଉଁ ବ୍ୟକ୍ତିମାନେ ଚାଉଳ, ଡାଲି, ତେଲ, ଘିଅ, ପନିପରିବା ଓ ଅନ୍ୟାନ୍ୟ ସାମଗ୍ରୀ ଦାନ କରୁଛନ୍ତି, ସେମାନେ ସମସ୍ତ ସାମଗ୍ରୀ କମିଟିର ନିର୍ଦ୍ଧାରିତ କାଉଣ୍ଟରରେ ହିଁ ଜମା କରନ୍ତୁ।</p>
+        </div>
+      </div>
+
+      <div class="info-strip">
+        <div><strong>📅 ମହୋତ୍ସବ ତାରିଖ</strong><span>୧୮–୨୨ ନଭେମ୍ବର ୨୦୨୬</span></div>
+        <div><strong>📍 ସ୍ଥାନ</strong><span>ଗୁଣୁପୁର, ଓଡ଼ିଶା</span></div>
+        <div><strong>🙏 ଆୟୋଜକ</strong><span>୨୪ ପ୍ରହର ପରିଚାଳନା କମିଟି</span></div>
+      </div>
+    </div>
+
+    <div class="notice-panel">
+      <div class="panel-title">📄 ମୁଖ୍ୟ ସୂଚନା / ନୋଟିସ୍ (PDF)</div>
+      <div class="pdf-row">
+        <span class="pdf-icon">📕</span>
+        <div><strong>ମହୋତ୍ସବ ସମ୍ପର୍କିତ ସୂଚନା</strong><small>PDF ଫାଇଲ୍</small></div>
+        <span class="pdf-soon">ଶୀଘ୍ର ଆସୁଛି</span>
+      </div>
+      <div class="pdf-row">
+        <span class="pdf-icon">📕</span>
+        <div><strong>କାର୍ଯ୍ୟକ୍ରମ ସମୟ ସାରଣୀ</strong><small>PDF ଫାଇଲ୍</small></div>
+        <span class="pdf-soon">ଶୀଘ୍ର ଆସୁଛି</span>
+      </div>
+      <div class="pdf-row">
+        <span class="pdf-icon">📕</span>
+        <div><strong>କମିଟିର ଅନ୍ୟାନ୍ୟ ନୋଟିସ୍</strong><small>PDF ଫାଇଲ୍</small></div>
+        <span class="pdf-soon">ଶୀଘ୍ର ଆସୁଛି</span>
+      </div>
+    </div>
+
   </div>
 </section>
 
 <section class="section" id="about">
-  <h2 class="section-title"
-      data-or="ମହୋତ୍ସବ ବିଷୟରେ"
-      data-en="About the Mahotsav">
-    ମହୋତ୍ସବ ବିଷୟରେ
-  </h2>
-
+  <h2 class="section-title">ମହୋତ୍ସବ ଓ କମିଟି</h2>
   <div class="gold-line"></div>
-
-  <p class="section-sub"
-     data-or="ଭକ୍ତି, ଶ୍ରଦ୍ଧା ଓ ସାମୂହିକ ନାମ ସଂକୀର୍ତ୍ତନର ଏକ ପବିତ୍ର ଆଧ୍ୟାତ୍ମିକ ଆୟୋଜନ।"
-     data-en="A sacred spiritual gathering celebrating devotion, faith and collective Nama Sankirtan.">
-    ଭକ୍ତି, ଶ୍ରଦ୍ଧା ଓ ସାମୂହିକ ନାମ ସଂକୀର୍ତ୍ତନର ଏକ ପବିତ୍ର ଆଧ୍ୟାତ୍ମିକ ଆୟୋଜନ।
-  </p>
-
-  <div class="notice">
-    <strong
-      data-or="ଆପଣ ସମସ୍ତ ଭକ୍ତବୃନ୍ଦଙ୍କୁ ଏହି ପବିତ୍ର ମହୋତ୍ସବରେ ସାଦର ନିମନ୍ତ୍ରଣ।"
-      data-en="All devotees are cordially invited to participate in this sacred Mahotsav.">
-      ଆପଣ ସମସ୍ତ ଭକ୍ତବୃନ୍ଦଙ୍କୁ ଏହି ପବିତ୍ର ମହୋତ୍ସବରେ ସାଦର ନିମନ୍ତ୍ରଣ।
-    </strong>
-  </div>
+  <p class="section-sub">ଭକ୍ତି, ଶ୍ରଦ୍ଧା ଓ ସାମୂହିକ ନାମ ସଂକୀର୍ତ୍ତନର ଏକ ପବିତ୍ର ଆଧ୍ୟାତ୍ମିକ ଆୟୋଜନ।</p>
+  <div class="notice">ଆପଣ ସମସ୍ତ ଭକ୍ତବୃନ୍ଦଙ୍କୁ ଏହି ପବିତ୍ର ମହୋତ୍ସବରେ ସାଦର ନିମନ୍ତ୍ରଣ।</div>
 </section>
 
 <section class="section" id="programme">
-  <h2 class="section-title"
-      data-or="ମହୋତ୍ସବର କାର୍ଯ୍ୟକ୍ରମ"
-      data-en="Festival Programme">
-    ମହୋତ୍ସବର କାର୍ଯ୍ୟକ୍ରମ
-  </h2>
-
+  <h2 class="section-title">ମହୋତ୍ସବର କାର୍ଯ୍ୟକ୍ରମ</h2>
   <div class="gold-line"></div>
-
   <div class="cards">
     <div class="card">
       <div class="symbol">🪔</div>
-      <h3 data-or="୧୮ ନଭେମ୍ବର ୨୦୨୬"
-          data-en="18 November 2026">
-        ୧୮ ନଭେମ୍ବର ୨୦୨୬
-      </h3>
-      <p data-or="ବିରାଟ କଳସ ଯାତ୍ରା"
-         data-en="Grand Kalasa Yatra">
-        ବିରାଟ କଳସ ଯାତ୍ରା
-      </p>
+      <h3>୧୮ ନଭେମ୍ବର ୨୦୨୬</h3>
+      <p>ବିରାଟ କଳସ ଯାତ୍ରା</p>
     </div>
-
     <div class="card">
       <div class="symbol">🙏</div>
-      <h3 data-or="୧୯ – ୨୨ ନଭେମ୍ବର ୨୦୨୬"
-          data-en="19 – 22 November 2026">
-        ୧୯ – ୨୨ ନଭେମ୍ବର ୨୦୨୬
-      </h3>
-      <p data-or="୨୪ ପ୍ରହର ଅଖଣ୍ଡ ନାମ ସଂକୀର୍ତ୍ତନ"
-         data-en="24 Prahara Akhanda Nama Sankirtan">
-        ୨୪ ପ୍ରହର ଅଖଣ୍ଡ ନାମ ସଂକୀର୍ତ୍ତନ
-      </p>
+      <h3>୧୯ – ୨୨ ନଭେମ୍ବର ୨୦୨୬</h3>
+      <p>୨୪ ପ୍ରହର ଅଖଣ୍ଡ ନାମ ସଂକୀର୍ତ୍ତନ</p>
     </div>
-
     <div class="card">
       <div class="symbol">🍚</div>
-      <h3 data-or="ଅନ୍ନ ପ୍ରସାଦ"
-          data-en="Anna Prasad">
-        ଅନ୍ନ ପ୍ରସାଦ
-      </h3>
-      <p data-or="୧୮ ତାରିଖ ସନ୍ଧ୍ୟା ୭ଟାରୁ ୨୨ ତାରିଖ ଅପରାହ୍ନ ୨ଟା ପର୍ଯ୍ୟନ୍ତ"
-         data-en="From 7 PM on 18 November until 2 PM on 22 November">
-        ୧୮ ତାରିଖ ସନ୍ଧ୍ୟା ୭ଟାରୁ ୨୨ ତାରିଖ ଅପରାହ୍ନ ୨ଟା ପର୍ଯ୍ୟନ୍ତ
-      </p>
+      <h3>ଅନ୍ନ ପ୍ରସାଦ</h3>
+      <p>୧୮ ତାରିଖ ସନ୍ଧ୍ୟା ୭ଟାରୁ ୨୨ ତାରିଖ ଅପରାହ୍ନ ୨ଟା ପର୍ଯ୍ୟନ୍ତ</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="countdown">
+    <h3>ମହୋତ୍ସବ ଆରମ୍ଭ ହେବାକୁ ବାକି ଅଛି</h3>
+    <div class="countdown-grid">
+      <div class="count-box"><strong id="days">--</strong><span>ଦିନ</span></div>
+      <div class="count-box"><strong id="hours">--</strong><span>ଘଣ୍ଟା</span></div>
+      <div class="count-box"><strong id="minutes">--</strong><span>ମିନିଟ୍</span></div>
+      <div class="count-box"><strong id="seconds">--</strong><span>ସେକେଣ୍ଡ</span></div>
     </div>
   </div>
 </section>
 
 <section class="section" id="members">
-  <h2 class="section-title"
-      data-or="ସଦସ୍ୟ ତାଲିକା"
-      data-en="Membership Directory">
-    ସଦସ୍ୟ ତାଲିକା
-  </h2>
-
+  <h2 class="section-title">ସଦସ୍ୟ ତାଲିକା</h2>
   <div class="gold-line"></div>
-
   <div class="notice">
-    <div class="member-count" id="memberStatus">
-      ସଦସ୍ୟଙ୍କ ତଥ୍ୟ ଲୋଡ୍ ହେଉଛି...
-    </div>
+    <div class="member-count" id="memberStatus">ସଦସ୍ୟଙ୍କ ତଥ୍ୟ ଲୋଡ୍ ହେଉଛି...</div>
   </div>
-
   <div class="table-wrap">
-    <table id="memberTable">
+    <table>
       <thead>
         <tr>
-          <th data-or="କ୍ରମିକ" data-en="Sl. No.">କ୍ରମିକ</th>
-          <th data-or="ସଦସ୍ୟଙ୍କ ନାମ" data-en="Member Name">ସଦସ୍ୟଙ୍କ ନାମ</th>
-          <th data-or="ବୁକ୍ ନଂ." data-en="Book No.">ବୁକ୍ ନଂ.</th>
-          <th data-or="ରସିଦ ନଂ." data-en="Receipt No.">ରସିଦ ନଂ.</th>
+          <th>କ୍ରମିକ</th>
+          <th>ସଦସ୍ୟଙ୍କ ନାମ</th>
+          <th>ବୁକ୍ ନଂ.</th>
+          <th>ରସିଦ ନଂ.</th>
         </tr>
       </thead>
-
       <tbody id="memberList">
-        <tr>
-          <td colspan="4" style="text-align:center">—</td>
-        </tr>
+        <tr><td colspan="4">ତଥ୍ୟ ଲୋଡ୍ ହେଉଛି...</td></tr>
       </tbody>
     </table>
   </div>
 </section>
 
-<section class="section" id="donations">
-  <h2 class="section-title"
-      data-or="ଦାନ ଓ ସହଯୋଗ"
-      data-en="Donations & Contributions">
-    ଦାନ ଓ ସହଯୋଗ
-  </h2>
-
+<section class="section" id="membership-books">
+  <h2 class="section-title">Membership Receipt Book</h2>
   <div class="gold-line"></div>
-
   <div class="cards">
-    <div class="card">
-      <div class="symbol">🌾</div>
-      <h3 data-or="ଚାଉଳ ଦାତା" data-en="Rice Donors">ଚାଉଳ ଦାତା</h3>
-      <p data-or="ଚାଉଳ ଦାତାଙ୍କ ତାଲିକା ଏଠାରେ ଦେଖାଯିବ।"
-         data-en="Rice donor details will appear here.">
-        ଚାଉଳ ଦାତାଙ୍କ ତାଲିକା ଏଠାରେ ଦେଖାଯିବ।
-      </p>
-    </div>
+    <div class="book-card" id="mb1"><h3>Book 1</h3><div class="book-range">Receipt No. 1–50</div><p>ସଦସ୍ୟ ରସିଦ ବିବରଣୀ</p><div class="book-status">ତଥ୍ୟ ଶୀଘ୍ର ଅପଡେଟ୍ ହେବ</div></div>
+    <div class="book-card" id="mb2"><h3>Book 2</h3><div class="book-range">Receipt No. 51–100</div><p>ସଦସ୍ୟ ରସିଦ ବିବରଣୀ</p><div class="book-status">ତଥ୍ୟ ଶୀଘ୍ର ଅପଡେଟ୍ ହେବ</div></div>
+    <div class="book-card" id="mb3"><h3>Book 3</h3><div class="book-range">Receipt No. 101–150</div><p>ସଦସ୍ୟ ରସିଦ ବିବରଣୀ</p><div class="book-status">ତଥ୍ୟ ଶୀଘ୍ର ଅପଡେଟ୍ ହେବ</div></div>
+    <div class="book-card" id="mb4"><h3>Book 4</h3><div class="book-range">Receipt No. 151–200</div><p>ସଦସ୍ୟ ରସିଦ ବିବରଣୀ</p><div class="book-status">ତଥ୍ୟ ଶୀଘ୍ର ଅପଡେଟ୍ ହେବ</div></div>
+  </div>
+</section>
 
-    <div class="card">
-      <div class="symbol">🥣</div>
-      <h3 data-or="ଡାଲି ଦାତା" data-en="Dal Donors">ଡାଲି ଦାତା</h3>
-      <p data-or="ଡାଲି ଦାତାଙ୍କ ତାଲିକା ଏଠାରେ ଦେଖାଯିବ।"
-         data-en="Dal donor details will appear here.">
-        ଡାଲି ଦାତାଙ୍କ ତାଲିକା ଏଠାରେ ଦେଖାଯିବ।
-      </p>
-    </div>
+<section class="section" id="normal-books">
+  <h2 class="section-title">Normal Receipt Book</h2>
+  <div class="gold-line"></div>
+  <div class="cards">
+    <div class="book-card" id="nb1"><h3>Book 1</h3><div class="book-range">Receipt No. 1–100</div><p>ସାଧାରଣ ରସିଦ ବିବରଣୀ</p><div class="book-status">ତଥ୍ୟ ଶୀଘ୍ର ଅପଡେଟ୍ ହେବ</div></div>
+    <div class="book-card" id="nb2"><h3>Book 2</h3><div class="book-range">Receipt No. 101–200</div><p>ସାଧାରଣ ରସିଦ ବିବରଣୀ</p><div class="book-status">ତଥ୍ୟ ଶୀଘ୍ର ଅପଡେଟ୍ ହେବ</div></div>
+    <div class="book-card" id="nb3"><h3>Book 3</h3><div class="book-range">Receipt No. 201–300</div><p>ସାଧାରଣ ରସିଦ ବିବରଣୀ</p><div class="book-status">ତଥ୍ୟ ଶୀଘ୍ର ଅପଡେଟ୍ ହେବ</div></div>
+    <div class="book-card" id="nb4"><h3>Book 4</h3><div class="book-range">Receipt No. 301–400</div><p>ସାଧାରଣ ରସିଦ ବିବରଣୀ</p><div class="book-status">ତଥ୍ୟ ଶୀଘ୍ର ଅପଡେଟ୍ ହେବ</div></div>
+  </div>
+</section>
 
-    <div class="card">
-      <div class="symbol">🪔</div>
-      <h3 data-or="ଅନ୍ୟାନ୍ୟ ସାମଗ୍ରୀ ଦାତା"
-          data-en="Other Material Donors">
-        ଅନ୍ୟାନ୍ୟ ସାମଗ୍ରୀ ଦାତା
-      </h3>
-      <p data-or="ସାମଗ୍ରୀ ଦାତାଙ୍କ ତାଲିକା ଏଠାରେ ଦେଖାଯିବ।"
-         data-en="Other material donor details will appear here.">
-        ସାମଗ୍ରୀ ଦାତାଙ୍କ ତାଲିକା ଏଠାରେ ଦେଖାଯିବ।
-      </p>
-    </div>
-
-    <div class="card">
-      <div class="symbol">🙏</div>
-      <h3 data-or="ଆର୍ଥିକ ସହଯୋଗୀ"
-          data-en="Financial Contributors">
-        ଆର୍ଥିକ ସହଯୋଗୀ
-      </h3>
-      <p data-or="ଆର୍ଥିକ ସହଯୋଗୀଙ୍କ ତାଲିକା ଏଠାରେ ଦେଖାଯିବ।"
-         data-en="Financial contributor details will appear here.">
-        ଆର୍ଥିକ ସହଯୋଗୀଙ୍କ ତାଲିକା ଏଠାରେ ଦେଖାଯିବ।
-      </p>
-    </div>
+<section class="section" id="donations">
+  <h2 class="section-title">ଦାନ ଓ ସହଯୋଗ</h2>
+  <div class="gold-line"></div>
+  <div class="cards">
+    <div class="card"><div class="symbol">🌾</div><h3>ଚାଉଳ ଦାତା</h3><p>ଚାଉଳ ଦାତାଙ୍କ ବିବରଣୀ ଏଠାରେ ଦେଖାଯିବ।</p></div>
+    <div class="card"><div class="symbol">🥣</div><h3>ଡାଲି ଦାତା</h3><p>ଡାଲି ଦାତାଙ୍କ ବିବରଣୀ ଏଠାରେ ଦେଖାଯିବ।</p></div>
+    <div class="card"><div class="symbol">🪔</div><h3>ଅନ୍ୟାନ୍ୟ ସାମଗ୍ରୀ ଦାତା</h3><p>ତେଲ, ଘିଅ, ଆଳୁ, ପନିପରିବା ଓ ଅନ୍ୟାନ୍ୟ ସାମଗ୍ରୀ ଦାତାଙ୍କ ବିବରଣୀ।</p></div>
+    <div class="card"><div class="symbol">🙏</div><h3>ଆର୍ଥିକ ସହଯୋଗୀ</h3><p>ଆର୍ଥିକ ସହଯୋଗୀଙ୍କ ବିବରଣୀ ଏଠାରେ ଦେଖାଯିବ।</p></div>
   </div>
 </section>
 
 <section class="section" id="kirtan">
-  <h2 class="section-title"
-      data-or="କୀର୍ତ୍ତନ ମଣ୍ଡଳୀ"
-      data-en="Kirtan Mandalis">
-    କୀର୍ତ୍ତନ ମଣ୍ଡଳୀ
-  </h2>
-
+  <h2 class="section-title">କୀର୍ତ୍ତନ ମଣ୍ଡଳୀ ସମୟ ସାରଣୀ</h2>
   <div class="gold-line"></div>
+  <div class="notice">କୀର୍ତ୍ତନ ମଣ୍ଡଳୀଙ୍କ ନାମ, ତାରିଖ ଓ ସମୟ ସାରଣୀ ଶୀଘ୍ର ଅପଡେଟ୍ କରାଯିବ।</div>
+</section>
 
-  <div class="current">
-    <h3 data-or="ବର୍ତ୍ତମାନ କୀର୍ତ୍ତନ ମଣ୍ଡଳୀ"
-        data-en="Currently Performing Mandali">
-      ବର୍ତ୍ତମାନ କୀର୍ତ୍ତନ ମଣ୍ଡଳୀ
-    </h3>
+<section class="section" id="gallery">
+  <h2 class="section-title">ଫଟୋ ଓ ଭିଡିଓ ଗ୍ୟାଲେରୀ</h2>
+  <div class="gold-line"></div>
+  <div class="will-update"><strong>Gallery Coming Soon</strong><p>ମହୋତ୍ସବର ଫଟୋ ଓ ଭିଡିଓ ଶୀଘ୍ର ଅପଲୋଡ୍ କରାଯିବ।</p></div>
+</section>
 
-    <div class="mandali" id="currentMandali">—</div>
-  </div>
+<section class="section" id="committee">
+  <h2 class="section-title">୩୮ ଜଣିଆ ପରିଚାଳନା କମିଟି</h2>
+  <div class="gold-line"></div>
+  <div class="will-update"><strong>Committee Details Coming Soon</strong><p>କମିଟି ସଦସ୍ୟଙ୍କ ନାମ ଓ ପଦବୀ ଶୀଘ୍ର ଅପଡେଟ୍ କରାଯିବ।</p></div>
+</section>
 
-  <h3 style="color:#54151b;margin:28px 0 12px"
-      data-or="ଆଗାମୀ କୀର୍ତ୍ତନ ମଣ୍ଡଳୀ"
-      data-en="Upcoming Mandalis">
-    ଆଗାମୀ କୀର୍ତ୍ତନ ମଣ୍ଡଳୀ
-  </h3>
-
-  <div id="upcomingMandalis">
-    <div class="notice"
-         data-or="କୀର୍ତ୍ତନ ମଣ୍ଡଳୀଙ୍କ ତାଲିକା ଶୀଘ୍ର ଉପଲବ୍ଧ ହେବ।"
-         data-en="Upcoming mandali details will appear here soon.">
-      କୀର୍ତ୍ତନ ମଣ୍ଡଳୀଙ୍କ ତାଲିକା ଶୀଘ୍ର ଉପଲବ୍ଧ ହେବ।
-    </div>
+<section class="section" id="kharcha">
+  <h2 class="section-title">ଖର୍ଚ୍ଚ ବିବରଣୀ</h2>
+  <div class="gold-line"></div>
+  <div class="will-update">
+    <strong>Will Update Soon</strong>
+    <p>ଖର୍ଚ୍ଚ ସମ୍ବନ୍ଧୀୟ ସମସ୍ତ ବିବରଣୀ ଖୁବ୍ ଶୀଘ୍ର ଅପଡେଟ୍ କରାଯିବ।</p>
   </div>
 </section>
 
-<footer>
-  <h2 data-or="ଜୟ ଜଗନ୍ନାଥ" data-en="JAI JAGANNATH">
-    ଜୟ ଜଗନ୍ନାଥ
-  </h2>
-
-  <p data-or="୨୪ ପ୍ରହର ନାମଯଜ୍ଞ ମହୋତ୍ସବ ପରିଚାଳନା କମିଟି"
-     data-en="24 Prahara Nama Yajna Mahotsav Organising Committee">
-    ୨୪ ପ୍ରହର ନାମଯଜ୍ଞ ମହୋତ୍ସବ ପରିଚାଳନା କମିଟି
-  </p>
-
-  <p data-or="ଗୁଣୁପୁର, ଓଡ଼ିଶା" data-en="Gunupur, Odisha">
-    ଗୁଣୁପୁର, ଓଡ଼ିଶା
-  </p>
-
-  <div class="copyright">
-    © 2026 24 Prahara Organising Committee, Gunupur. All Rights Reserved.
+<section class="section" id="contact">
+  <h2 class="section-title">ଯୋଗାଯୋଗ</h2>
+  <div class="gold-line"></div>
+  <div class="card" style="text-align:center">
+    <h3>୨୪ ପ୍ରହର ନାମଯଜ୍ଞ ମହୋତ୍ସବ ପରିଚାଳନା କମିଟି</h3>
+    <p>ଗୁଣୁପୁର, ଓଡ଼ିଶା</p>
+    <p>ଯୋଗାଯୋଗ ବିବରଣୀ ଶୀଘ୍ର ଅପଡେଟ୍ ହେବ।</p>
   </div>
+</section>
+
+<section class="section">
+  <h2 class="section-title">ଶୀଘ୍ର ଯାଆନ୍ତୁ (Quick Links)</h2>
+  <div class="gold-line"></div>
+  <div class="quick-grid">
+    <a class="quick-link" href="#members"><span class="symbol">👥</span><strong>ସଦସ୍ୟ ତାଲିକା</strong><small>Membership</small></a>
+    <a class="quick-link" href="#membership-books"><span class="symbol">📖</span><strong>Membership Receipt Book</strong></a>
+    <a class="quick-link" href="#normal-books"><span class="symbol">📘</span><strong>Normal Receipt Book</strong></a>
+    <a class="quick-link" href="#donations"><span class="symbol">🙏</span><strong>ଦାନ ଓ ସହଯୋଗ</strong></a>
+    <a class="quick-link" href="#kirtan"><span class="symbol">🎵</span><strong>କୀର୍ତ୍ତନ ସମୟ ସାରଣୀ</strong></a>
+    <a class="quick-link" href="#gallery"><span class="symbol">🖼️</span><strong>ଫଟୋ ଗ୍ୟାଲେରୀ</strong></a>
+    <a class="quick-link" href="#committee"><span class="symbol">👥</span><strong>କମିଟି</strong></a>
+    <a class="quick-link" href="#kharcha"><span class="symbol">📒</span><strong>ଖର୍ଚ୍ଚ ବିବରଣୀ</strong><small>Will Update Soon</small></a>
+    <a class="quick-link" href="#contact"><span class="symbol">☎️</span><strong>ଯୋଗାଯୋଗ</strong></a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <h2>ଜୟ ଜଗନ୍ନାଥ</h2>
+  <p>୨୪ ପ୍ରହର ଅଖଣ୍ଡ ନାମଯଜ୍ଞ ମହୋତ୍ସବ ପରିଚାଳନା କମିଟି</p>
+  <p>ଗୁଣୁପୁର, ଓଡ଼ିଶା</p>
+  <div class="copyright">© 2026 24 Prahara Organising Committee, Gunupur. All Rights Reserved.</div>
 </footer>
 
 <script>
 const API_URL = "https://script.google.com/macros/s/AKfycbyLTzQZ_CIDcri53-W3FZy3QpN7DlLZ7pElz66tQba8lXv6b_94WqFjy_aeLuKGPU0p/exec";
 
 let currentLanguage = 'or';
+let lastMemberCount = null;
 
 function setLanguage(lang) {
   currentLanguage = lang;
@@ -646,34 +544,25 @@ function setLanguage(lang) {
     el.textContent = el.dataset[lang];
   });
 
-  document.getElementById('orBtn').classList.toggle('active', lang === 'or');
-  document.getElementById('enBtn').classList.toggle('active', lang === 'en');
-
+  document.getElementById('orBtn').classList.toggle('active',lang==='or');
+  document.getElementById('enBtn').classList.toggle('active',lang==='en');
   updateMemberStatus(lastMemberCount);
 }
 
 function escapeHTML(value) {
   return String(value ?? '').replace(/[&<>"']/g, char => ({
-    '&':'&amp;',
-    '<':'&lt;',
-    '>':'&gt;',
-    '"':'&quot;',
-    "'":'&#39;'
+    '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
   })[char]);
 }
 
-let lastMemberCount = null;
-
 function updateMemberStatus(count) {
   const status = document.getElementById('memberStatus');
-
   if (count === null) {
     status.textContent = currentLanguage === 'or'
       ? 'ସଦସ୍ୟଙ୍କ ତଥ୍ୟ ଲୋଡ୍ ହେଉଛି...'
       : 'Loading membership data...';
     return;
   }
-
   status.textContent = currentLanguage === 'or'
     ? 'ମୋଟ ସଦସ୍ୟ: ' + count + ' ଜଣ'
     : 'Total Members: ' + count;
@@ -719,12 +608,10 @@ function loadMembers() {
   script.src = API_URL + '?callback=' + callbackName + '&t=' + Date.now();
 
   script.onerror = function() {
-    const status = document.getElementById('memberStatus');
-
-    status.textContent = currentLanguage === 'or'
+    document.getElementById('memberStatus').textContent =
+      currentLanguage === 'or'
       ? 'ସଦସ୍ୟଙ୍କ ତଥ୍ୟ ଲୋଡ୍ ହୋଇପାରିଲା ନାହିଁ।'
       : 'Unable to load membership data.';
-
     delete window[callbackName];
     script.remove();
   };
@@ -732,8 +619,35 @@ function loadMembers() {
   document.body.appendChild(script);
 }
 
+function updateCountdown() {
+  const target = new Date('2026-11-18T00:00:00+05:30').getTime();
+  const now = Date.now();
+  let distance = target - now;
+
+  if (distance <= 0) {
+    document.querySelector('.countdown h3').textContent =
+      'ଜୟ ଜଗନ୍ନାଥ — ମହୋତ୍ସବ ଆରମ୍ଭ ହୋଇଛି';
+    ['days','hours','minutes','seconds'].forEach(id => {
+      document.getElementById(id).textContent = '0';
+    });
+    return;
+  }
+
+  const days = Math.floor(distance / (1000*60*60*24));
+  const hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
+  const minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
+  const seconds = Math.floor((distance % (1000*60)) / 1000);
+
+  document.getElementById('days').textContent = days;
+  document.getElementById('hours').textContent = hours;
+  document.getElementById('minutes').textContent = minutes;
+  document.getElementById('seconds').textContent = seconds;
+}
+
 loadMembers();
-setInterval(loadMembers, 15000);
+setInterval(loadMembers,15000);
+updateCountdown();
+setInterval(updateCountdown,1000);
 </script>
 
 </body>
