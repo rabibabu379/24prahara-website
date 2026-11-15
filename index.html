@@ -221,6 +221,52 @@ footer p { color:#d8c2a4;font-size:13px; }
   .section { padding:45px 16px; }
   .topbar { padding:8px 12px; }
 }
+
+/* Professional Members Table */
+#memberTable {
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+  border: 2px solid #7b2028;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 18px;
+}
+
+#memberTable th {
+  background: #54151b;
+  color: #fff2cf;
+  padding: 14px 12px;
+  border: 1px solid #d7ad58;
+  text-align: center;
+  white-space: nowrap;
+}
+
+#memberTable td {
+  padding: 12px;
+  border: 1px solid #d8c5a5;
+  text-align: center;
+  color: #39251d;
+}
+
+#memberTable tbody tr:nth-child(even) {
+  background: #fff5e5;
+}
+
+#memberTable tbody tr:hover {
+  background: #f7e4c2;
+}
+
+@media (max-width: 600px) {
+  #memberTable {
+    font-size: 13px;
+  }
+  #memberTable th,
+  #memberTable td {
+    padding: 9px 7px;
+  }
+}
+
 </style>
 </head>
 
